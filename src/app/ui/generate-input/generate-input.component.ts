@@ -1,5 +1,6 @@
-import { Component, output } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Component, inject, output } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { GenerateInputService } from './gemerate-input.service';
 
 @Component({
   selector: 'app-generate-input',
@@ -9,9 +10,13 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
   styleUrl: './generate-input.component.scss',
 })
 export class GenerateInputComponent {
-  readonly form = new FormGroup({
-    prompt: new FormControl(''),
-  });
+  private readonly generateInputService = inject(GenerateInputService);
+  readonly form = this.generateInputService.form;
 
   submit = output<string>();
+
+  onSubmit() {
+    this.submit.emit(this.generateInputService.form.controls.prompt.value!);
+    console.log('test ss');
+  }
 }
