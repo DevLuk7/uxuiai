@@ -1,5 +1,5 @@
-import { Component, effect, inject, input } from '@angular/core';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { Component, computed, inject, input } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-preview-html',
@@ -13,18 +13,14 @@ export class PreviewHtmlComponent {
 
   private readonly domSanitizer = inject(DomSanitizer);
 
-  srcdoc!: SafeHtml;
-
-  constructor() {
-    effect(() => {
-      this.srcdoc = this.domSanitizer.bypassSecurityTrustHtml(`
+  srcdoc = computed(() =>
+    this.domSanitizer.bypassSecurityTrustHtml(`
       <div>
         <div class="absolute w-full min-h-full p-4 flex justify-center items-center">
           ${this.code()}
         </div>
       </div>
       <script src="https://cdn.tailwindcss.com"></script>
-    `);
-    });
-  }
+    `)
+  );
 }
