@@ -7,6 +7,10 @@ import { CodeEditorComponent } from './feature-preview/ui/code-editor/code-edito
 import { PreviewHtmlComponent } from './feature-preview/ui/preview-html/preview-html.component';
 import { GenerateService } from './feature-generate/generate.service';
 import { NotificationsService } from './feature-notifications/notifications.service';
+import { PillComponent } from './ui/pill/pill.component';
+import { GenerateInputComponent } from './ui/generate-input/generate-input.component';
+import { CardComponent } from './ui/card/card.component';
+import { SpinnerComponent } from './ui/spinner/spinner.component';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +22,10 @@ import { NotificationsService } from './feature-notifications/notifications.serv
     CodeEditorComponent,
     PreviewHtmlComponent,
     ReactiveFormsModule,
+    PillComponent,
+    GenerateInputComponent,
+    CardComponent,
+    SpinnerComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
@@ -72,18 +80,6 @@ export class AppComponent {
       });
 
       this.generatedCode = obj.html;
-    });
-  }
-
-  constructor() {
-    this.notifications.show({
-      title: 'title 1',
-      message: 'message 1',
-    });
-
-    this.notifications.show({
-      title: 'title 2',
-      message: 'message 2',
     });
   }
 }

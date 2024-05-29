@@ -1,3 +1,43 @@
+<div class="min-h-screen flex flex-col items-center justify-center p-6">
+  <div class="w-full max-w-7xl bg-gray-800 rounded-lg shadow-lg p-6">
+    <app-generate-input
+      (submit)="generateWithPrompt($event)"
+    ></app-generate-input>
+
+    <div class="flex flex-wrap mb-6 gap-2">
+      @for (item of publicPrompts; track $index) {
+      <app-pill (click)="generateWithPrompt(item.prompt)">{{
+        item.label
+      }}</app-pill>
+      }
+    </div>
+
+    <!-- Main Content -->
+    <div
+      class="grid grid-cols-1 lg:grid-cols-2 gap-6"
+      style="min-height: 500px"
+    >
+      @if (!generateService.isLoading()) { @if (generatedCode) {
+      <!-- Code Editor -->
+      <app-card>
+        <h2 class="section-title">Code Editor</h2>
+        <app-code-editor [code]="generatedCode"></app-code-editor>
+      </app-card>
+
+      <!-- Preview Iframe -->
+      <app-card>
+        <h2 class="section-title">Preview</h2>
+        <app-preview-html [code]="generatedCode"></app-preview-html>
+      </app-card>
+      } } @else {
+      <div class="col-span-2 flex justify-center items-center h-full">
+        <app-spinner></app-spinner>
+      </div>
+      }
+    </div>
+  </div>
+</div>
+<!--
 <div class="h-screen w-screen flex flex-col items-center justify-center">
   <div class="h-1/5 flex flex-col items-center justify-center">
     <form
@@ -42,16 +82,6 @@
         >
       </button>
     </form>
-    <div class="flex flex-row justify-center mt-4">
-      @for (item of publicPrompts; track $index) {
-      <span
-        (click)="generateWithPrompt(item.prompt)"
-        class="inline-block whitespace-nowrap rounded-full bg-indigo-100 px-[0.65em] pb-[0.25em] pt-[0.35em] text-center align-baseline text-[0.75em] font-bold leading-none text-indigo-700 dark:bg-slate-900 dark:text-indigo-500 mx-1 cursor-pointer"
-      >
-        {{ item.label }}
-      </span>
-      }
-    </div>
   </div>
 
   <div class="p-4 flex gap-4 w-screen h-4/5">
@@ -66,4 +96,4 @@
     <p class="text-center w-full">Loading...</p>
     }
   </div>
-</div>
+</div> -->

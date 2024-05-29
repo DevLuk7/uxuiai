@@ -18,7 +18,7 @@ export class CodeEditorComponent {
     this.editor = monaco.editor.create(this.editorContainer()?.nativeElement, {
       value: this.code(),
       language: 'html',
-      theme: 'vs',
+      theme: 'vs-dark',
     });
   }
 }
