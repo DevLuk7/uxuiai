@@ -2,4 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import 'highlight.js/styles/github-dark.css';
+body {
+  @apply bg-gray-100
+}
