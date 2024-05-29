@@ -1,5 +1,5 @@
-<div class="h-screen w-screen flex items-center justify-center">
-  <div class="flex flex-col">
+<div class="h-screen w-screen flex flex-col items-center justify-center">
+  <div class="h-1/5 flex flex-col items-center justify-center">
     <div class="flex flex-row items-center justify-center">
       <div
         class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md"
@@ -33,18 +33,18 @@
       </span>
       }
     </div>
+  </div>
 
-    <div class="p-4 flex w-screen">
-      @if (!isLoadingGeneratedCode) { @if (generatedCode) {
-      <pre class="hljs overflow-x-scroll w-1/2">
+  <div class="p-4 flex w-screen h-4/5">
+    @if (!isLoadingGeneratedCode) { @if (generatedCode) {
+    <pre class="hljs overflow-x-scroll w-1/2 flex">
           <code class="language-javascript">{{generatedCode}}</code>
         </pre>
-      <div class="overflow-x-scroll w-1/2">
-        <iframe class="w-full h-full" [srcdoc]="getSrcdoc()"></iframe>
-      </div>
-      } } @else {
-      <p>Loading...</p>
-      }
+    <div class="overflow-x-scroll w-1/2">
+      <iframe class="w-full h-full" [srcdoc]="getSrcdoc()"></iframe>
     </div>
+    } } @else {
+    <p class="text-center w-full">Loading...</p>
+    }
   </div>
 </div>

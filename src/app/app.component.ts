@@ -151,7 +151,7 @@ export class AppComponent {
   getSrcdoc() {
     return this.domSanitizer.bypassSecurityTrustHtml(`
       <div>
-        <div class="absolute w-full min-h-full flex justify-center items-center">
+        <div class="absolute w-full min-h-full p-4 flex justify-center items-center">
           ${this.generatedCode}
         </div>
       </div>
