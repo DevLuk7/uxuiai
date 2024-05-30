@@ -8,14 +8,14 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'app-button',
+  selector: 'button[appButton]',
   standalone: true,
   imports: [],
   templateUrl: './button.component.html',
   styleUrl: './button.component.scss',
 })
 export class ButtonComponent {
-  type = input();
+  variant = input();
 
   private readonly render = inject(Renderer2);
   private readonly elemRef = inject(ElementRef);
@@ -24,7 +24,7 @@ export class ButtonComponent {
     effect(() => {
       this.render.addClass(
         this.elemRef.nativeElement,
-        `btn-${this.type() || 'primary'}`
+        `btn-${this.variant() || 'primary'}`
       );
     });
   }

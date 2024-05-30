@@ -1,11 +1,21 @@
 <div class="flex justify-between h-full">
-  <div></div>
+  <div class="flex items-center ml-4">
+    <a
+      routerLink="component"
+      routerLinkActive="nav-link-active"
+      class="nav-link"
+      >Component</a
+    >
+    <a routerLink="page" routerLinkActive="nav-link-active" class="nav-link"
+      >Page</a
+    >
+  </div>
   <div class="flex items-center h-full pr-4">
     @if (!authService.user()) {
-    <app-button [type]="'outline'" (click)="signIn()">Sign in</app-button>
+    <button appButton variant="outline" (click)="signIn()">Sign in</button>
     } @else {
     <p class="pr-2">Logged as: {{ authService.user()?.email }}</p>
-    <app-button [type]="'outline'" (click)="signOut()">Sign out</app-button>
+    <button appButton variant="outline" (click)="signOut()">Sign out</button>
     }
   </div>
 </div>

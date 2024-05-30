@@ -1,0 +1,27 @@
+<!-- Main Content -->
+<div class="main flex flex-col gap-6 h-full">
+  @if (!generateService.isLoading()) { @if (generatedCode) {
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full">
+    <!-- Code Editor -->
+    <app-card>
+      <h2 class="section-title">Code Editor</h2>
+      <app-code-editor [code]="generatedCode"></app-code-editor>
+    </app-card>
+
+    <!-- Preview Iframe -->
+    <app-card>
+      <h2 class="section-title">Preview</h2>
+      <app-preview-html [code]="generatedCode"></app-preview-html>
+    </app-card>
+  </div>
+
+  } } @else {
+  <div class="col-span-2 flex justify-center items-center h-full">
+    <app-spinner></app-spinner>
+  </div>
+  }
+</div>
+
+<div class="fixed bottom-0 left-0 w-screen px-4">
+  <app-generate-input (submit)="submit($event)"></app-generate-input>
+</div>
