@@ -1,0 +1,11 @@
+<div class="flex justify-between h-full">
+  <div></div>
+  <div class="flex items-center h-full pr-4">
+    @if (!authService.user()) {
+    <app-button [type]="'outline'" (click)="signIn()">Sign in</app-button>
+    } @else {
+    <p class="pr-2">Logged as: {{ authService.user()?.email }}</p>
+    <app-button [type]="'outline'" (click)="signOut()">Sign out</app-button>
+    }
+  </div>
+</div>

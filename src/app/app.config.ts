@@ -7,6 +7,7 @@ import { routes } from './app.routes';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getVertexAI, provideVertexAI } from '@angular/fire/vertexai-preview';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { provideAuth, getAuth } from '@angular/fire/auth';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -24,6 +25,7 @@ export const appConfig: ApplicationConfig = {
       })
     ),
     provideVertexAI(() => getVertexAI()),
+    provideAuth(() => getAuth()),
     provideAnimationsAsync(),
   ],
 };
