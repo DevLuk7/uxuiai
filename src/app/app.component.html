@@ -11,23 +11,37 @@
     </div>
 
     <!-- Main Content -->
-    <div
-      class="grid grid-cols-1 lg:grid-cols-2 gap-6"
-      style="min-height: 500px"
-    >
+    <div class="flex flex-col gap-6">
       @if (!generateService.isLoading()) { @if (generatedCode) {
-      <!-- Code Editor -->
-      <app-card>
-        <h2 class="section-title">Code Editor</h2>
-        <app-code-editor [code]="generatedCode"></app-code-editor>
-      </app-card>
+      <div
+        class="grid grid-cols-1 lg:grid-cols-2 gap-6"
+        style="min-height: 500px"
+      >
+        <!-- Code Editor -->
+        <app-card>
+          <h2 class="section-title">Code Editor</h2>
+          <app-code-editor [code]="generatedCode"></app-code-editor>
+        </app-card>
 
-      <!-- Preview Iframe -->
+        <!-- Preview Iframe -->
+        <app-card>
+          <h2 class="section-title">Preview</h2>
+          <app-preview-html [code]="generatedCode"></app-preview-html>
+        </app-card>
+      </div>
+
+      @if (suggestions.length > 0) {
       <app-card>
-        <h2 class="section-title">Preview</h2>
-        <app-preview-html [code]="generatedCode"></app-preview-html>
+        <h2 class="section-title">Suggestions</h2>
+        <ul>
+          @for (suggestion of suggestions; track $index) {
+          <li>
+            <strong>{{ suggestion.title }}</strong> {{ suggestion.message }}
+          </li>
+          }
+        </ul>
       </app-card>
-      } } @else {
+      } } } @else {
       <div class="col-span-2 flex justify-center items-center h-full">
         <app-spinner></app-spinner>
       </div>
