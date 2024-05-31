@@ -15,11 +15,7 @@ export class PreviewHtmlComponent {
 
   srcdoc = computed(() =>
     this.domSanitizer.bypassSecurityTrustHtml(`
-      <div>
-        <div class="absolute w-full min-h-full p-4 flex justify-center items-center">
-          ${this.code()}
-        </div>
-      </div>
+      ${this.code()}
       <script src="https://cdn.tailwindcss.com"></script>
     `)
   );

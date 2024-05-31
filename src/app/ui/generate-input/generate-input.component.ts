@@ -1,6 +1,6 @@
 import { Component, inject, output } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { GenerateInputService } from './gemerate-input.service';
+import { GenerateInputService } from './generate-input.service';
 import { ButtonComponent } from '../button/button.component';
 
 @Component({

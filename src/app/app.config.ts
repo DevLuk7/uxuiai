@@ -8,6 +8,8 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getVertexAI, provideVertexAI } from '@angular/fire/vertexai-preview';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideAuth, getAuth } from '@angular/fire/auth';
+import { AIModelService } from './feature-generate/ai-model.service';
+import { AIModelGeminiService } from './feature-generate/ai-model-gemini.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -27,5 +29,9 @@ export const appConfig: ApplicationConfig = {
     provideVertexAI(() => getVertexAI()),
     provideAuth(() => getAuth()),
     provideAnimationsAsync(),
+    {
+      provide: AIModelService,
+      useClass: AIModelGeminiService,
+    },
   ],
 };
